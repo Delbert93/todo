@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="Diabetes.Views.AddRecipePage"
+             Title="{Binding Title}"
+             BackgroundColor= "#E6E6E6">
+    <ContentPage.Content>
+        <StackLayout>
+            <Button Text="Back To Main" Command="{Binding BackToHome}"/>
+            <Entry Placeholder="Recipe Name" 
+                Text="{Binding RecipeName}" 
+                HorizontalTextAlignment="Center"/>
+            <Entry Placeholder="Ingredient" 
+                Text="{Binding IngredientName}" 
+                HorizontalTextAlignment="Center"/>
+            <Entry Placeholder="Quantity" 
+                Keyboard ="Numeric" 
+                Text="{Binding IngredientQuantity}" 
+                HorizontalTextAlignment="Center"/>
+            <Button Text="Add Ingredient" 
+                Command="{Binding AddIngredient}" 
+                HorizontalOptions="CenterAndExpand"/>
+            <ListView ItemsSource="{Binding Ingredients}  {Binding Quantity}" />
+            <ContentView HeightRequest="200">
+                <Editor Text="{Binding Steps}"/>
+            </ContentView>
+            <Button Text="Submit" 
+                Command="{Binding SubmitRecipe}" 
+                HorizontalOptions="CenterAndExpand"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

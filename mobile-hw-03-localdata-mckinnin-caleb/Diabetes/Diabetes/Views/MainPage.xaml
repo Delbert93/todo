@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:b="clr-namespace:Diabetes.Behaviors"
+             x:Class="Diabetes.Views.MainPage"
+             Title="{Binding Title}"
+             BackgroundColor= "#E6E6E6">
+
+    <StackLayout HorizontalOptions="Center"
+                 VerticalOptions="Center">
+        <Image Source="{Binding AppLogo}"
+               HeightRequest="300"/>
+        <Button Text="Add Recipe"
+                Command="{Binding AddRecipe}"/>
+        <ListView ItemsSource="{Binding Recipes}"
+                  SelectedItem="{Binding SelectedRecipe}"
+                  HorizontalOptions="Center"
+                  VerticalOptions="Center" 
+                  Margin="10">
+            <ListView.Behaviors>
+                <b:EventToCommandBehavior EventName="ItemTapped" 
+                                          Command="{Binding ViewRecipeCommand}" />
+            </ListView.Behaviors>
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <Label Text="{Binding Name}"
+                               Margin="5,5,5,20"
+                               BackgroundColor="#B4C5E4"
+                               Padding="22,15,22,15" 
+                               HorizontalOptions="Center"/>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </StackLayout>
+
+</ContentPage>
+
+<!--BackgroundColor="#B4C5E4"-->
+<!--BackgroundColor= "#E6E6E6"-->
+    
